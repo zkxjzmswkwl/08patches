@@ -27,8 +27,8 @@ namespace Patches
 		*/
 		uint8_t shellcode[]
 		{
-			0xB8, 0x00, 0x00, 0x00, 0x00,			// mov eax, 0
-			0xC3									// ret
+			0xB8, 0x00, 0x00, 0x00, 0x00,        // mov eax, 0
+			0xC3                                 // ret
 		};
 		Winshit::ProtWrite(isDebuggerPresentLoc, shellcode, 6);
 		Winshit::PrintAddress<FARPROC>("IsDebuggerPresent", isDebuggerPresentLoc);
