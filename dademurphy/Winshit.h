@@ -16,9 +16,9 @@ namespace Winshit
 	template <typename T>
 	void PrintAddress(String proc, T address)
 	{
-#ifdef STDOUT_ADDRESSES
+        #ifdef STDOUT_ADDRESSES
 		std::cout << proc << "\t" << std::hex << address << "\n";
-#endif
+        #endif
 	}
 	//---------------------------------------------------------------------------
 };
