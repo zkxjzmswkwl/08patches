@@ -1,11 +1,12 @@
 #pragma once
+#include "pch.h"
 #include "Config.h"
 
 namespace Winshit
 {
 	//---------------------------------------------------------------------------
 	template <typename T>
-	void ProtWrite(T, uint8_t[], size_t)
+	void ProtWrite(T location, uint8_t shellcode[], size_t len)
 	{
 		DWORD prevProt;
 		VirtualProtect(reinterpret_cast<LPVOID>(location), len, PAGE_EXECUTE_READWRITE, &prevProt);
