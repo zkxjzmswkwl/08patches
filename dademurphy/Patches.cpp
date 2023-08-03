@@ -22,7 +22,7 @@ namespace Patches
 			mov eax, qword ptr[rax+2]    ; teb + 0x2 = `BeingDebugged`
 			ret
 
-			Which I **think** is something like `NtGetCurrentPeb()->someproperty`, with `NtGetCurrentPeb` being inlined.
+			Which I **think** is something like `NtCurrentTeb()->someproperty`, with `NtGetCurrentPeb` being inlined.
 			Windows stores the TEB in GS on x64, FS on x86. Smarter every day and that.
 		*/
 		uint8_t shellcode[]
