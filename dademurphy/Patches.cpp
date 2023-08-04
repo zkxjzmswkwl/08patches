@@ -11,7 +11,8 @@ namespace Patches
 	}
 	//---------------------------------------------------------------------------
 	void DebuggerPresent()
-	{
+	{   // `IsDebuggerPresent` is often implemented manually. This does not account for that. possibility.
+		// Naive pattern: 65 48 8b 04 25 ??
 		const auto k32 = GetModuleHandle("KernelBase");
 		const auto isDebuggerPresentLoc = GetProcAddress(k32, "IsDebuggerPresent");
 
