@@ -4,7 +4,7 @@
 
 struct BlizzThread
 {
-	enum State { UNTOUCHED, SUSPENDED, RUNNING };
+	enum State { UNTOUCHED, SUSPENDED, RUNNING, CANT_OPEN };
 	BlizzThread(uint32 threadId, State state) :
 		threadId(threadId), state(state) {}
 
@@ -21,6 +21,11 @@ struct BlizzThread
 
 		if (this->state != State::SUSPENDED)
 		{
+			if (!this->handle)
+			{
+				this->state = State::CANT_OPEN;
+				PRINT_LAST_ERROR(__FUNCTION__);
+			}
 			SuspendThread(this->handle);
 			this->state = State::SUSPENDED;
 		}

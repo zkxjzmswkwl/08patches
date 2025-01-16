@@ -4,7 +4,6 @@
 #include "MinHook.h"
 #include "Hooks.h"
 
-
 void PlaceHooks()
 {
     const auto ws2 = GetModuleHandle("ws2_32.dll");
@@ -67,6 +66,7 @@ uintptr DadeMurphy(HMODULE hModule)
     MH_Uninitialize();
 
     Uninitialize(sout, hModule);
+    return 0;
 }
 //---------------------------------------------------------------------------
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD  ul_reason_for_call, LPVOID lpReserved)

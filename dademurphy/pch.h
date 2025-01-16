@@ -28,4 +28,14 @@ using String = std::string;
 using uint32 = uint32_t;
 using uintptr = uintptr_t;
 
+#define PRINT_LAST_ERROR(src) \
+    do { \
+        DWORD errorCode = GetLastError(); \
+        char* errorMessage = nullptr; \
+        FormatMessageA(FORMAT_MESSAGE_ALLOCATE_BUFFER | FORMAT_MESSAGE_FROM_SYSTEM | FORMAT_MESSAGE_IGNORE_INSERTS, \
+                       nullptr, errorCode, MAKELANGID(LANG_NEUTRAL, SUBLANG_DEFAULT), \
+                       (LPSTR)&errorMessage, 0, nullptr); \
+        std::cout << "[" << src << "] Error: " << errorCode << ": " << errorMessage << "\n"; \
+        LocalFree(errorMessage); \
+    } while (false)
 #endif //PCH_H
