@@ -25,7 +25,9 @@ struct BlizzThread
 			{
 				this->state = State::CANT_OPEN;
 				PRINT_LAST_ERROR(__FUNCTION__);
+				return;
 			}
+
 			SuspendThread(this->handle);
 			this->state = State::SUSPENDED;
 		}
