@@ -3,6 +3,18 @@ just a dump of things for switching between machines etc.
 
 minhook to be replaced w cpp kronos port eventually.
 
+- things
+  -
+    - https://jemalloc.net/
+    - https://github.com/protocolbuffers/protobuf
+    - some strings encrypted.
+      - comp-time gen'd functions for decryption.
+      - `ntdll.dll` is xor'd but for some reason shit like `NtSetInformationThread` isn't.
+    - they manually map `ntdll.dll`. They read a copy from disk to yoink syscall idxs. Similarly to vmp.
+      - Unlike vmp, you can't set `KUSER_SHARED_DATA`'s winver to 6969 and win.
+    - Conditional patches on `ntdll!DbgBreakPoint`(?)
+    - if anything like wow shit tons of crc checks.
+
 ```c++
 int __stdcall WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
 {
